@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Thousand Year Blood War-dle!</title>
+    <!-- water.css dark mode -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <link rel="stylesheet" href="assets/index.css">
+</head>
+<body>
+    <div id="header" class="header">
+        <h1 class="heading" style="color: #F6F6F6; text-shadow:
+    -1px -2px 0 #00f,
+    1px -2px 0 #00f,
+    -1px 2px 0 #00f,
+    1px 2px 0 #00f; "><em>THOUSAND YEAR BLOOD WAR-DLE</em></h1>
+        <div class="about">
+            <strong><a class="aboutLink" onclick="toggleAbout()"><h2 id="aboutToggle" class="heading" style="font-weight: 700; font-family: BleachTYBW">ABOUT</h2></a></strong>
+            <h4 id="aboutTextHeader" class="heading" style="color: #F6F6F6; font-family: BleachTYBW; display: none"><strong><em>A BLEACH Wordle Game</em><br>Updates at 9 AM EST</strong></h4>
+            <p id="aboutText" style="display: none;">test</p>
+        </div>
+        <h2 class="heading" style="font-family: BleachTYBW"><strong>Guess that <em><span style="color: #F6F6F6">BLEACH</span></em> character!<br>You have <span id="guessCounter" style="color: #cc3300" data-default="8">8</span> guesses left!</strong></h2>
+        <br>
+        <label for="guess" style="margin-left: -50px;">Enter your guess here: </label>
+        <br>
+        <div class="inputfield" id="inputfield">
+            <input type="text" id="guess" data-default="" placeholder="Enter character name"/>
+            <button class="clear" id="clearGuess">✖</button>
+            <button class="submitGuess" onclick="guess()">→</button>
+            <div class="matches" id="matches"></div>
+        </div>
+        <br>
+    </div>
+    <div id="guesses" class="guesses" data-default="">
+        <div class="guessBox" data-default=""></div>
+    </div>
+<script src="index.js"></script>
+</body>
+</html>
