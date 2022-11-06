@@ -1,0 +1,152 @@
+@font-face {
+    font-family: 'Bleach';
+    src: url('fonts/Bleach.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BleachTYBW';
+    src:
+            url('fonts/ITCAvantGardeStd-XLtCn.woff') format('woff'),
+            url('fonts/ITCAvantGardeStd-BkCn.woff') format('woff'),
+            url('fonts/ITCAvantGardeStd-BkCnObl.woff') format('woff'),
+            url('fonts/ITCAvantGardeStd-BkObl.woff') format('woff'),
+            url('fonts/ITCAvantGardeStd-Bold.woff') format('woff'),
+            url('fonts/ITCAvantGardeStd-BoldCn.woff') format('woff'),
+            url('fonts/ITCAvantGardeStd-MdObl.woff') format('woff'),
+            url('fonts/ITCAvantGardeStd-XLt.woff') format('woff'),
+            url('fonts/ITCAvantGardeStd-XLtCn.woff') format('woff'),
+            url('fonts/ITCAvantGardeStd-XLtCnObl.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.header {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 50%;
+}
+.heading {
+    font-weight: 400;
+    font-family: Bleach;
+    color: #DFD4C7;
+}
+input {
+    width: 80%;
+    display: inline-block;
+    float: left;
+}
+.submitGuess {
+    padding: 10px 10px 10px 10px;
+    width: 12%;
+    display: inline-block;
+    float: right;
+}
+.inputfield {
+    position: relative;
+}
+a.aboutLink {
+    text-decoration: none;
+    position: relative;
+    width: 1%;
+}
+a.aboutLink::before {
+    text-decoration: none;
+    content: '';
+    position: absolute;
+    width: 50%;
+    margin-left: -48px;
+    height: 2px;
+    border-radius: 4px;
+    background-color: #F6F6F6;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
+
+a.aboutLink:hover::before {
+    text-decoration: none;
+    transform-origin: left;
+    transform: scaleX(1);
+}
+.guesses {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+.matches {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center;
+    overflow: auto;
+    max-height: 250px;
+    display: none;
+}
+.clear {
+    padding: 10px 6px 10px 6px;
+    width: 12%;
+    background: transparent;
+    display: inline-block;
+    position: absolute;
+    margin-left: -80px;
+    border: 1px;
+}
+.clear:hover {
+    padding: 10px 10px 10px 10px;
+    width: 12%;
+    background: none;
+    display: inline-block;
+    position: absolute;
+    margin-left: -80px;
+}
+.guessAutofill {
+    margin: 0px auto 0px auto;
+    background-color: gainsboro;
+}
+.guessAutofill:hover {
+    background-color: #cfcfcf;
+}
+.guessBox {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.guessBoxLabel {
+    width: 14%;
+    display: inline-block;
+    font-family: BleachTYBW;
+    color: #F6F6F6;
+}
+.guessImage {
+    display: inline-block;
+    width: 150px;
+    background: no-repeat;
+    border-radius: 50%;
+    height: 150px;
+    border: 1px solid;
+    background-size:100% 100%;
+}
+.guessText {
+    display: inline-block;
+    width: 14%;
+    display: inline-block;
+    color: #F6F6F6;
+}
+
+@media screen and (max-width: 800px) {
+    .header {
+        width: 90%;
+    }
+    .guessBox {
+        width: 90%;
+    }
+    .guessImage {
+        width: 90px;
+        height: 90px;
+    }
+}
