@@ -26,7 +26,7 @@ function toggleAbout() {
 
 // search characters.json and filter
 const searchCharacters = async (searchText) => {
-    const res = await fetch("../assets/characters.json");
+    const res = await fetch("../assets/json/characters.json");
     const characters = await res.json();
 
     // Get matches to current text input
@@ -34,6 +34,7 @@ const searchCharacters = async (searchText) => {
         const regex = new RegExp(`${searchText}`, "gi");
         return character.name.match(regex);
     });
+    console.log(matches);
 
     if (searchText.length === 0) {
         matches = [];
@@ -82,9 +83,9 @@ document.onclick = function(e){
     }
 }
 
-// listener to detect guess submission
+// listener to detect guess submission on SUBMIT button click
 submitGuess.addEventListener("click", async () => {
-    const res = await fetch("../assets/characters.json");
+    const res = await fetch("../assets/json/characters.json");
     const characters = await res.json();
     const guess = search.value;
     let matches = characters.filter(character => {
@@ -93,10 +94,13 @@ submitGuess.addEventListener("click", async () => {
     });
     search.value = "";
     searchMatches.innerHTML = "";
+    console.log(guess);
+    console.log(matches);
     if (guess === "" || matches.length === 0) {
         document.getElementById("error").style.display = "block";
     }
     else {
+        document.getElementById("error").style.display = "none";
         if (guesses.innerHTML === "") {
             guesses.innerHTML += `
                 <div class="guessBox">
@@ -114,29 +118,69 @@ submitGuess.addEventListener("click", async () => {
     }
 })
 
+// listener to detect guess submission on ENTER KEY press
+document.addEventListener('keypress', async function (e) {
+    if (e.key === 'Enter' && search.value !== "") {
+        const res = await fetch("../assets/json/characters.json");
+        const characters = await res.json();
+        const guess = search.value;
+        let matches = characters.filter(character => {
+            const regex = new RegExp(guess, "gi");
+            return character.name.match(regex);
+        });
+        search.value = "";
+        searchMatches.innerHTML = "";
+        console.log(guess);
+        console.log(matches);
+        if (guess === "" || matches.length === 0) {
+            document.getElementById("error").style.display = "block";
+        }
+        else {
+            document.getElementById("error").style.display = "none";
+            if (guesses.innerHTML === "") {
+                guesses.innerHTML += `
+                <div class="guessBox">
+                    <div class="guessBoxLabel"><h3><strong>Image</strong></h3></div>
+                    <div class="guessBoxLabel"><h3><strong>Name</strong></h3></div>
+                    <div class="guessBoxLabel"><h3><strong>Race</strong></h3></div>
+                    <div class="guessBoxLabel"><h3><strong>Affiliation</strong></h3></div>
+                    <div class="guessBoxLabel"><h3><strong>Status</strong></h3></div>
+                    <div class="guessBoxLabel"><h3><strong>Height</strong></h3></div>
+                    <div class="guessBoxLabel"><h3><strong>Weight</strong></h3></div>
+                </div>
+            `;
+            }
+            await guessFunc(matches[0]);
+        }
+    }
+});
+
 // on click guess function
 guessFunc = async (guess) => {
     // parse today.json for data of the correct answer
-    const ans = await fetch("../assets/today.json");
+    const ans = await fetch("../assets/json/today.json");
     const answer = await ans.json();
     console.log(answer)
     console.log(guess)
     // if guess is correct
     if (guess.name === answer.name) {
+        const imageURL = "assets/images/" + answer.image + ".jpg"
         // output the correct guess div w/ correct answer texts
         const html = `
         <div class="guessBox" data-default="">
-            <div class="guessImage" style="background-image: url('${answer.image}')"></div>
+            <div class="guessImage" style="background-image: url('${imageURL}')"></div>
             <div class="guessText"><h3><strong>${answer.name}</strong></h3></div>
-            <div class="guessText"><h3 style="color: #32cd32"><strong>${answer.race}</strong></h3></div>
-            <div class="guessText"><h3 style="color: #32cd32"><strong>${answer.affiliation}</strong></h3></div>
-            <div class="guessText"><h3 style="color: #32cd32"><strong>${answer.status}</strong></h3></div>
-            <div class="guessText"><h3 style="color: #32cd32"><strong>${answer.height}</strong></h3></div>
-            <div class="guessText"><h3 style="color: #32cd32"><strong>${answer.weight}</strong></h3></div>
+            <div class="guessText"><strong><h3 style="color: #32cd32">${answer.race}</h3></strong></div>
+            <div class="guessText"><strong><h3 style="color: #32cd32">${answer.affiliation}</h3></strong></div>
+            <div class="guessText"><strong><h3 style="color: #32cd32">${answer.status}</h3></strong></div>
+            <div class="guessText"><strong><h3 style="color: #32cd32">${answer.height}</h3></strong></div>
+            <div class="guessText"><strong><h3 style="color: #32cd32">${answer.weight}</h3></strong></div>
         </div>
         `;
         guesses.innerHTML += html;
         // hide all buttons and inputs
+
+        // display NICE JOB! text
 
         // change counter
         const counter = parseInt(document.getElementById("guessCounter").textContent)
@@ -144,20 +188,27 @@ guessFunc = async (guess) => {
     }
     // if guess is incorrect
     else {
+        const imageURL = "assets/images/" + guess.image + ".jpg"
         const html = `
         <div class="guessBox" data-default="">
-            <div class="guessImage" style="background-image: url('${guess.image}')"></div>
+            <div class="guessImage" style="background-image: url('${imageURL}')"></div>
             <div class="guessText"><h3><strong>${guess.name}</strong></h3></div>
-            <div class="guessText"><h3 style="color: ${guess.race === answer.race ? "#32cd32" : "#cc3300"}"><strong>${guess.race}</strong></h3></div>
-            <div class="guessText"><h3 style="color: ${guess.affiliation === answer.affiliation ? "#32cd32" : "#cc3300"}"><strong>${guess.affiliation}</strong></h3></div>
-            <div class="guessText"><h3 style="color: ${guess.status === answer.status ? "#32cd32" : "#cc3300"}"><strong>${guess.status}</strong></h3></div>
-            <div class="guessText"><h3 style="color: ${guess.height === answer.height ? "#32cd32" : "#cc3300"}"><strong>${guess.height}</strong></h3></div>
-            <div class="guessText"><h3 style="color: ${guess.weight === answer.weight ? "#32cd32" : "#cc3300"}"><strong>${guess.weight}</strong></h3></div>
+            <div class="guessText"><strong><h3 style="color: ${guess.race === answer.race ? "#32cd32" : "#cc3300"}">${guess.race}</h3></strong></div>
+            <div class="guessText"><strong><h3 style="color: ${guess.affiliation === answer.affiliation ? "#32cd32" : "#cc3300"}">${guess.affiliation}</h3></strong></div>
+            <div class="guessText"><strong><h3 style="color: ${guess.status === answer.status ? "#32cd32" : "#cc3300"}">${guess.status}</h3></strong></div>
+            <div class="guessText"><strong><h3 style="color: ${guess.height === answer.height ? "#32cd32" : "#cc3300"}">${guess.height}</h3></strong></div>
+            <div class="guessText"><strong><h3 style="color: ${guess.weight === answer.weight ? "#32cd32" : "#cc3300"}">${guess.weight}</h3></strong></div>
         </div>
         `;
         guesses.innerHTML += html;
         // change counter
         const counter = parseInt(document.getElementById("guessCounter").textContent)
         document.getElementById("guessCounter").innerHTML = (counter - 1).toString();
+        // if counter === 0
+
+            // hide all inputs and other buttons
+
+            // display NICE TRY! text
+
     }
 }
