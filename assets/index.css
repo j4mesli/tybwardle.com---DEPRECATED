@@ -75,8 +75,7 @@ a.aboutLink:hover::before {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
-    display: none;
+    width: 60%;
 }
 .matches {
     margin-left: auto;
@@ -111,9 +110,42 @@ a.aboutLink:hover::before {
 .guessAutofill:hover {
     background-color: #cfcfcf;
 }
+.guessBox {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.guessBoxLabel {
+    width: 14%;
+    display: inline-block;
+    font-family: BleachTYBW;
+    color: #F6F6F6;
+}
+.guessImage {
+    display: inline-block;
+    width: 125px;
+    background: no-repeat;
+    height: 125px;
+    border: 1px solid;
+    background-size:100% 100%;
+}
+.guessText {
+    display: inline-block;
+    width: 14%;
+    display: inline-block;
+    color: #F6F6F6;
+}
 
 @media screen and (max-width: 800px) {
     .header {
-        width: 80%;
+        width: 90%;
+    }
+    .guessBox {
+        width: 90%;
+    }
+    .guessImage {
+        width: 90px;
+        height: 90px;
     }
 }

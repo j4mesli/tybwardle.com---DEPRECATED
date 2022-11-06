@@ -27,14 +27,13 @@
         <div class="inputfield" id="inputfield">
             <input type="text" id="guess" data-default="" placeholder="Enter character name"/>
             <button class="clear" id="clearGuess">✖</button>
-            <button class="submitGuess" onclick="guess()">→</button>
+            <button id="submitGuess" class="submitGuess">→</button>
             <div class="matches" id="matches"></div>
         </div>
         <br>
+        <h5 id="error" style="display: none; color: #cc3300;">Error: Select a valid guess from the dropdown!</h5>
     </div>
-    <div id="guesses" class="guesses" data-default="">
-        <div class="guessBox" data-default=""></div>
-    </div>
+    <div id="guesses" class="guesses" data-default=""></div>
 <script src="index.js"></script>
 </body>
 </html>
