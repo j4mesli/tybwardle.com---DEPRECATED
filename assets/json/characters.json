@@ -60,7 +60,7 @@
     "status" : "Alive",
     "height" : 181,
     "weight" : 66,
-    "image" : "686Post-War_Ichigo"
+    "image" : "ichigo"
   },
   {
     "name" : "Ryo Kunieda",
@@ -627,7 +627,7 @@
     "status" : "Deceased",
     "height" : 159,
     "weight" : 45,
-    "image" : "523Unohana%27s_scar"
+    "image" : "unohana"
   },
   {
     "name" : "Jushiuro Ukitake",
