@@ -22,8 +22,10 @@
         </div>
         <h2 class="heading" style="font-family: BleachTYBW"><strong>Guess that <em><span style="color: #F6F6F6">BLEACH</span></em> character!<br>You have <span id="guessCounter" style="color: #cc3300" data-default="10">10</span> guesses left!</strong></h2>
         <br>
-        <label for="guess" style="margin-left: -50px;">Enter your guess here: </label>
+        <label id="guesslabel" for="guess" style="margin-left: -50px;">Enter your guess here: </label>
         <br>
+        <div class="inputfield" id="congratulations" style="width: 100%; text-align: center; font-family: BleachTYBW; display: none; margin-top: -50px;"></div>
+        <div class="inputfield" id="sorry" style="width: 100%; text-align: center; font-family: BleachTYBW; display: none; margin-top: -50px;"></div>
         <div class="inputfield" id="inputfield">
             <input type="text" id="guess" data-default="" placeholder="Enter character name"/>
             <button class="clear" id="clearGuess">✖</button>
@@ -32,6 +34,7 @@
         </div>
         <br>
         <h5 id="error" style="display: none; color: #cc3300;">Error: Select a valid guess from the dropdown!</h5>
+        <h5 id="guessAlreadyUsed" style="display: none; color: #cc3300;">Error: Please guess a character you haven't tried already!</h5>
     </div>
     <div id="guesses" class="guesses" data-default=""></div>
 <script src="index.js"></script>

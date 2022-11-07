@@ -3,6 +3,9 @@ const searchMatches = document.getElementById("matches");
 const clearSearch = document.getElementById("clearGuess");
 const submitGuess = document.getElementById("submitGuess");
 const guesses = document.getElementById("guesses");
+const congratulations = document.getElementById("congratulations");
+const sorry = document.getElementById("sorry");
+let userGuesses = [];
 
 // hide/show about section
 function toggleAbout() {
@@ -12,14 +15,12 @@ function toggleAbout() {
             document.getElementById("aboutToggle").innerText = "CLOSE";
             document.getElementById("aboutToggle").style.color = "#ff531a";
             document.getElementById("aboutTextHeader").style.display = "block";
-            document.getElementById("closeAbout").style.display = "block";
             break;
         case "block":
             document.getElementById("aboutText").style.display = "none";
             document.getElementById("aboutToggle").innerText = "ABOUT";
             document.getElementById("aboutToggle").style.color = "#DFD4C7";
             document.getElementById("aboutTextHeader").style.display = "none";
-            document.getElementById("closeAbout").style.display = "none";
             break;
     }
 }
@@ -34,7 +35,7 @@ const searchCharacters = async (searchText) => {
         const regex = new RegExp(`${searchText}`, "gi");
         return character.name.match(regex);
     });
-    console.log(matches);
+    // console.log(matches);
 
     if (searchText.length === 0) {
         matches = [];
@@ -48,7 +49,7 @@ const outputHTML = matches => {
     if (matches.length > 0) {
         const html = matches.map(match => `
             <div class="guessAutofill" onclick="fillInput('${match.name}')">
-                <h4 style="font-family: BleachTYBW; padding: 15px 10px 10px 10px; margin: 0px 0px 0px 0px; color: #0f0f0f">
+                <h4 style="font-family: BleachTYBW; padding: 15px 10px 10px 10px; margin: 0 0 0 0; color: #0f0f0f">
                     ${match.name}
                 </h4>
             </div>
@@ -94,13 +95,15 @@ submitGuess.addEventListener("click", async () => {
     });
     search.value = "";
     searchMatches.innerHTML = "";
-    console.log(guess);
-    console.log(matches);
     if (guess === "" || matches.length === 0) {
         document.getElementById("error").style.display = "block";
     }
+    else if (userGuesses.includes(matches[0].name)) {
+        document.getElementById("guessAlreadyUsed").style.display = "block";
+    }
     else {
         document.getElementById("error").style.display = "none";
+        document.getElementById("guessAlreadyUsed").style.display = "none";
         if (guesses.innerHTML === "") {
             guesses.innerHTML += `
                 <div class="guessBox">
@@ -119,8 +122,8 @@ submitGuess.addEventListener("click", async () => {
 })
 
 // listener to detect guess submission on ENTER KEY press
-document.addEventListener('keypress', async function (e) {
-    if (e.key === 'Enter' && search.value !== "") {
+document.addEventListener("keypress", async function (e) {
+    if (e.key === "Enter" && search.value !== "") {
         const res = await fetch("../assets/json/characters.json");
         const characters = await res.json();
         const guess = search.value;
@@ -130,13 +133,17 @@ document.addEventListener('keypress', async function (e) {
         });
         search.value = "";
         searchMatches.innerHTML = "";
-        console.log(guess);
-        console.log(matches);
+        // console.log(guess);
+        // console.log(matches);
         if (guess === "" || matches.length === 0) {
             document.getElementById("error").style.display = "block";
         }
+        else if (userGuesses.includes(matches[0].name)) {
+            document.getElementById("guessAlreadyUsed").style.display = "block";
+        }
         else {
             document.getElementById("error").style.display = "none";
+            document.getElementById("guessAlreadyUsed").style.display = "none";
             if (guesses.innerHTML === "") {
                 guesses.innerHTML += `
                 <div class="guessBox">
@@ -155,13 +162,13 @@ document.addEventListener('keypress', async function (e) {
     }
 });
 
-// on click guess function
+// guess function
 guessFunc = async (guess) => {
+    // adds name of guess to list of already guessed names
+    userGuesses.push(guess.name);
     // parse today.json for data of the correct answer
     const ans = await fetch("../assets/json/today.json");
     const answer = await ans.json();
-    console.log(answer)
-    console.log(guess)
     // if guess is correct
     if (guess.name === answer.name) {
         const imageURL = "assets/images/" + answer.image + ".jpg"
@@ -178,13 +185,33 @@ guessFunc = async (guess) => {
         </div>
         `;
         guesses.innerHTML += html;
-        // hide all buttons and inputs
-
-        // display NICE JOB! text
-
         // change counter
-        const counter = parseInt(document.getElementById("guessCounter").textContent)
-        document.getElementById("guessCounter").innerHTML = (counter - 1).toString();
+        const counter = parseInt(document.getElementById("guessCounter").textContent)-1
+        document.getElementById("guessCounter").innerHTML = counter.toString();
+        // hide all buttons and inputs
+        document.getElementById("guesslabel").style.display = "none";
+        document.getElementById("inputfield").style.display = "none";
+        // display NICE JOB! text
+        guesses.style.marginTop = "-50px";
+        congratulations.style.display = "block";
+        const attemptNo = () => {
+            const i = (10-counter) % 10,
+                n = (10-counter) % 100;
+            if (i == 1 && n != 11) {
+                return (10-counter) + "st";
+            }
+            if (i == 2 && n != 12) {
+                return (10-counter) + "nd";
+            }
+            if (i == 3 && n != 13) {
+                return (10-counter) + "rd";
+            }
+            return (10-counter) + "th";
+        };
+        congratulations.innerHTML += `
+            <strong><h1 style="text-decoration: underline; color: #00ff7f">CONGRATULATIONS</h1></strong>
+            <strong><h3 style="margin-top: -10px;">You guessed <span style="color: #00ff7f">${guess.name}</span> correctly on your <span style="color: #cc3300">${attemptNo()}</span> try!</h3></strong>
+        `;
     }
     // if guess is incorrect
     else {
@@ -202,13 +229,37 @@ guessFunc = async (guess) => {
         `;
         guesses.innerHTML += html;
         // change counter
-        const counter = parseInt(document.getElementById("guessCounter").textContent)
-        document.getElementById("guessCounter").innerHTML = (counter - 1).toString();
+        const counter = parseInt(document.getElementById("guessCounter").textContent) - 1;
+        document.getElementById("guessCounter").innerHTML = counter.toString();
         // if counter === 0
-
+        if (counter === 0) {
             // hide all inputs and other buttons
-
+            document.getElementById("guesslabel").style.display = "none";
+            document.getElementById("inputfield").style.display = "none";
+            guesses.style.marginTop = "-50px";
+            sorry.style.display = "block";
             // display NICE TRY! text
-
+            sorry.innerHTML += `
+                <strong><h1 style="text-decoration: underline; color: #cc3300">GAME OVER</h1></strong>
+                <strong><h3 style="margin-top: -10px;">The correct answer was <span style="color: #00ff7f">${answer.name}</span>! Come back tomorrow at 12AM EST to try again!</h3></strong>
+            `;
+            // adds you missed: answer text
+            const imageURL = "assets/images/" + answer.image + ".jpg";
+            const html = `
+                <strong><h1 style="text-decoration: underline; color: #cc3300">YOU MISSED</h1></strong>
+                <div class="guessBox" data-default="">
+                    <div class="guessImage" style="background-image: url('${imageURL}')"></div>
+                    <div class="guessText"><h3><strong>${answer.name}</strong></h3></div>
+                    <div class="guessText"><strong><h3 style="color: #32cd32">${answer.race}</h3></strong></div>
+                    <div class="guessText"><strong><h3 style="color: #32cd32">${answer.affiliation}</h3></strong></div>
+                    <div class="guessText"><strong><h3 style="color: #32cd32">${answer.status}</h3></strong></div>
+                    <div class="guessText"><strong><h3 style="color: #32cd32">${answer.height}</h3></strong></div>
+                    <div class="guessText"><strong><h3 style="color: #32cd32">${answer.weight}</h3></strong></div>
+                </div>
+                `;
+            guesses.innerHTML += html;
+            document.getElementById("error").style.display = "none";
+            document.getElementById("guessAlreadyUsed").style.display = "none";
+        }
     }
 }
