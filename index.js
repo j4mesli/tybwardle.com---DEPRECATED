@@ -209,6 +209,7 @@ guessFunc = async (guess) => {
             }
             return (10-counter) + "th";
         };
+        incorrectanswer.style.display = "none";
         congratulations.innerHTML += `
             <strong><h1 style="text-decoration: underline; color: #00ff7f">CONGRATULATIONS</h1></strong>
             <strong><h3 style="margin-top: -10px;">You guessed <span style="color: #00ff7f">${guess.name}</span> correctly on your <span style="color: #cc3300">${attemptNo()}</span> try!</h3></strong>
@@ -223,6 +224,22 @@ guessFunc = async (guess) => {
     // if guess is incorrect
     else {
         const imageURL = "assets/images/" + guess.image + ".jpg"
+        const lowHighWeight = () => {
+            if (guess.weight < answer.weight) {
+                return "🔺";
+            }
+            else {
+                return "🔻";
+            }
+        }
+        const lowHighHeight = () => {
+            if (guess.weight < answer.weight) {
+                return "🔺";
+            }
+            else {
+                return "🔻";
+            }
+        }
         const html = `
         <div class="guessBox" data-default="">
             <div class="guessImage" style="background-image: url('${imageURL}')"></div>
@@ -230,8 +247,8 @@ guessFunc = async (guess) => {
             <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.race === answer.race ? "#32cd32" : "#cc3300"}">${guess.race}</h4></strong></div>
             <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.affiliation === answer.affiliation ? "#32cd32" : "#cc3300"}">${guess.affiliation}</h4></strong></div>
             <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.status === answer.status ? "#32cd32" : "#cc3300"}">${guess.status}</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.height === answer.height ? "#32cd32" : "#cc3300"}">${guess.height} cm</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.weight === answer.weight ? "#32cd32" : "#cc3300"}">${guess.weight} kg</h3></strong></div>
+            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.height === answer.height ? "#32cd32" : "#cc3300"}">${guess.height} cm ${lowHighHeight()}</h4></strong></div>
+            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.weight === answer.weight ? "#32cd32" : "#cc3300"}">${guess.weight} kg ${lowHighWeight()}</h3></strong></div>
         </div>
         `;
         guesses.innerHTML += html;
