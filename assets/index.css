@@ -41,7 +41,7 @@ input {
 }
 .submitGuess {
     padding: 10px 10px 10px 10px;
-    width: 12%;
+    width: 11%;
     display: inline-block;
     float: right;
 }
@@ -149,6 +149,9 @@ a.aboutLink:hover::before {
 }
 
 @media screen and (max-width: 800px) {
+    input {
+        width: 80%;
+    }
     .header {
         width: 90%;
     }
@@ -163,5 +166,25 @@ a.aboutLink:hover::before {
         margin-right: 2px;
         width: 90px;
         height: 90px;
+    }
+    .clear {
+        margin-left: -120px;
+    }
+    .clear:hover {
+        margin-left: -120px;
+    }
+    .submitGuess {
+        width: 12%;
+    }
+}
+@media screen and (max-width: 500px) {
+    input {
+        width: 75%;
+    }
+    .clear {
+        margin-left: -100px;
+    }
+    .clear:hover {
+        margin-left: -100px;
     }
 }
