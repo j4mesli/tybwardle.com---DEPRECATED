@@ -240,7 +240,7 @@
     "status" : "Alive",
     "height" : 203,
     "weight" : 145,
-    "image" : "Ep37TatsufusaEnj%3Fji"
+    "image" : "tatsufusa"
   },
   {
     "name" : "Shinobu Eishima",
@@ -285,7 +285,7 @@
     "status" : "Alive",
     "height" : 173,
     "weight" : 131,
-    "image" : "521Hikifune%27s_slim_form"
+    "image" : "hikifune"
   },
   {
     "name" : "Momo Hinamori",
@@ -519,7 +519,7 @@
     "status" : "Alive",
     "height" : 192,
     "weight" : 87,
-    "image" : "515Shunsui%27s_new_appearance"
+    "image" : "shunsui"
   },
   {
     "name" : "Ikkaku Madarame",
@@ -663,7 +663,7 @@
     "status" : "Alive",
     "height" : 153,
     "weight" : 45,
-    "image" : "Ep29Hanatar%3FYamada"
+    "image" : "yamada"
   },
   {
     "name" : "Genryusai Shigekuni Yamamoto",
@@ -960,7 +960,7 @@
     "status" : "Deceased",
     "height" : 160,
     "weight" : 52,
-    "image" : "Ep44S%3FkenIshida"
+    "image" : "soken"
   },
   {
     "name" : "Ryuken Ishida",
