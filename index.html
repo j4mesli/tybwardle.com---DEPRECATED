@@ -18,9 +18,14 @@
         <div class="about">
             <strong><a class="aboutLink" onclick="toggleAbout()"><h2 id="aboutToggle" class="heading" style="font-weight: 700; font-family: BleachTYBW">ABOUT</h2></a></strong>
             <h4 id="aboutTextHeader" class="heading" style="color: #F6F6F6; font-family: BleachTYBW; display: none"><strong><em>A BLEACH Wordle Game</em><br>Updates at 9 AM EST</strong></h4>
-            <p id="aboutText" style="display: none;">test</p>
+            <strong></strong><p id="aboutText" style="display: none; font-family: BleachTYBW; text-align: left;">
+                <em>THOUSAND YEAR BLOOD WAR-DLE</em> is a game based off the New York Times' Wordle minigame where you take turns guessing what a hidden word is!
+                <br><br>To play, you enter a guess into the text bar, and submit it! The game will then tell you whether your answer is <span style="color: #32cd32">CORRECT</span> or <span style="color: #cc3300">INCORRECT</span>, and if incorrect, will highlight the mismatching information provided <span style="color: #cc3300">RED</span>.
+                <br><br>Created by <a href="https://www.linkedin.com/in/j4meslii/" target="_blank">James Li</a> using vanilla JavaScript/HTML5/CSS3. View the repository <a href="https://github.com/j4mesli/tybwardle.io" target="_blank">here</a>!
+                <br><br><em>BLEACH</em>, it's characters, and their likenesses are all owned by VIZ Media, Shueisha, and Tite Kubo. Please support the official release!
+            </p></strong>
         </div>
-        <h2 class="heading" style="font-family: BleachTYBW"><strong>Guess that <em><span style="color: #F6F6F6">BLEACH</span></em> character!<br>You have <span id="guessCounter" style="color: #cc3300" data-default="10">10</span> guesses left!</strong></h2>
+        <h2 class="heading" style="font-family: BleachTYBW"><strong>Guess that <em><span style="color: #F6F6F6">BLEACH</span></em> character!<br>You have <span id="guessCounter" style="color: #cc3300" data-default="10">10</span> <span id="1guess">guesses</span> left!</strong></h2>
         <br>
         <label id="guesslabel" for="guess" style="margin-left: -50px;">Enter your guess here: </label>
         <br>
@@ -33,6 +38,7 @@
             <div class="matches" id="matches"></div>
         </div>
         <br>
+        <h4 id="IncorrectAnswer" style="display: none; color: #cc3300;">INCORRECT ANSWER, PLEASE TRY AGAIN!</h4>
         <h5 id="error" style="display: none; color: #cc3300;">Error: Select a valid guess from the dropdown!</h5>
         <h5 id="guessAlreadyUsed" style="display: none; color: #cc3300;">Error: Please guess a character you haven't tried already!</h5>
     </div>
