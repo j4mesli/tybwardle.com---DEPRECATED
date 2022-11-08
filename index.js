@@ -87,7 +87,7 @@ document.onclick = function(e){
 
 // listener to detect guess submission on SUBMIT button click
 submitGuess.addEventListener("click", async () => {
-    const res = await fetch("../assets/json/characters.json");
+    const res = await fetch("../tybwardle.io/assets/json/characters.json");
     const characters = await res.json();
     const guess = search.value;
     let matches = characters.filter(character => {
@@ -125,7 +125,7 @@ submitGuess.addEventListener("click", async () => {
 // listener to detect guess submission on ENTER KEY press
 document.addEventListener("keypress", async function (e) {
     if (e.key === "Enter" && search.value !== "") {
-        const res = await fetch("../assets/json/characters.json");
+        const res = await fetch("../tybwardle.io/assets/json/characters.json");
         const characters = await res.json();
         const guess = search.value;
         let matches = characters.filter(character => {
@@ -168,11 +168,11 @@ guessFunc = async (guess) => {
     // adds name of guess to list of already guessed names
     userGuesses.push(guess.name);
     // parse today.json for data of the correct answer
-    const ans = await fetch("../assets/json/today.json");
+    const ans = await fetch("../tybwardle.io/assets/json/today.json");
     const answer = await ans.json();
     // if guess is correct
     if (guess.name === answer.name) {
-        const imageURL = "assets/images/" + answer.image + ".jpg"
+        const imageURL = "/tybwardle.io/assets/images/" + answer.image + ".jpg"
         // output the correct guess div w/ correct answer texts
         const html = `
         <div class="guessBox" data-default="">
@@ -222,7 +222,7 @@ guessFunc = async (guess) => {
     }
     // if guess is incorrect
     else {
-        const imageURL = "assets/images/" + guess.image + ".jpg"
+        const imageURL = "/tybwardle.io/assets/images/" + guess.image + ".jpg"
         const html = `
         <div class="guessBox" data-default="">
             <div class="guessImage" style="background-image: url('${imageURL}')"></div>
@@ -251,7 +251,7 @@ guessFunc = async (guess) => {
                 <strong><h3 style="margin-top: -10px;">The correct answer was <span style="color: #00ff7f">${answer.name}</span>! Come back tomorrow at 9AM EST to try again!</h3></strong>
             `;
             // adds you missed: answer text
-            const imageURL = "assets/images/" + answer.image + ".jpg";
+            const imageURL = "/tybwardle.io/assets/images/" + answer.image + ".jpg";
             const html = `
                 <strong><h1 style="font-family: BleachTYBW; text-decoration: underline; color: #cc3300; margin-top: 0;">YOU MISSED</h1></strong>
                 <div class="guessBox" data-default="">
