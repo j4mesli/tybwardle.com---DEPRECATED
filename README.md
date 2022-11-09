@@ -5,4 +5,6 @@ Using vanilla JavaScript, HTML5, and CSS3, I was able to create a game inspired 
 
 ## TO-DO:
 1. Fully complete mobile optimization (about 80-90% formatted).
-2. Create cron job that automatically updates today.json with a random entry from characters.json for the random daily characters!
+2. ~~Create cron job that automatically updates today.json with a random entry from characters.json for the random daily characters!~~ ✅
+3. Add share results functionality (JavaScript mailing function(?))
+4. Add login/save results function (convert to .php, add MySQL)
