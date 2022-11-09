@@ -108,13 +108,13 @@ submitGuess.addEventListener("click", async () => {
         if (guesses.innerHTML === "") {
             guesses.innerHTML += `
                 <div class="guessBox" style="border-bottom: 1px solid; margin-bottom: 10px;">
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>IMAGE</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>NAME</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>RACE</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>AFFILIATION</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>STATUS</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>HEIGHT</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>WEIGHT</strong></h3></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">IMAGE</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">NAME</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">RACE</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">LEAGUE</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">STATUS</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">HEIGHT</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">WEIGHT</h3></strong></div>
                 </div>
             `;
         }
@@ -148,13 +148,13 @@ document.addEventListener("keypress", async function (e) {
             if (guesses.innerHTML === "") {
                 guesses.innerHTML += `
                 <div class="guessBox" style="border-bottom: 1px solid; margin-bottom: 10px;">
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>IMAGE</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>NAME</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>RACE</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>AFFILIATION</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>STATUS</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>HEIGHT</strong></h3></div>
-                    <div class="guessBoxLabel"><h3 style="font-family: BleachTYBW"><strong>WEIGHT</strong></h3></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">IMAGE</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">NAME</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">RACE</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">LEAGUE</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">STATUS</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">HEIGHT</h3></strong></div>
+                    <div class="guessBoxLabel"><strong><h3 class="shrinkMobile" style="font-family: BleachTYBW">WEIGHT</h3></strong></div>
                 </div>
             `;
             }
@@ -177,12 +177,12 @@ guessFunc = async (guess) => {
         const html = `
         <div class="guessBox" data-default="">
             <div class="guessImage" style="background-image: url('${imageURL}')"></div>
-            <div class="guessText"><h4 style="font-family: BleachTYBW;"><strong>${answer.name}</strong></h4></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.race}</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.affiliation}</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.status}</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.height} cm</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.weight} kg</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; ">${answer.name}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.race}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.affiliation}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.status}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.height === 0 ? "N/A" : answer.height + " cm"}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.weight === 0 ? "N/A" : answer.weight + " kg"}</h4></strong></div>
         </div>
         `;
         guesses.innerHTML += html;
@@ -243,12 +243,12 @@ guessFunc = async (guess) => {
         const html = `
         <div class="guessBox" data-default="">
             <div class="guessImage" style="background-image: url('${imageURL}')"></div>
-            <div class="guessText"><h4 style="font-family: BleachTYBW; " ><strong>${guess.name}</strong></h4></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.race === answer.race ? "#32cd32" : "#cc3300"}">${guess.race}</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.affiliation === answer.affiliation ? "#32cd32" : "#cc3300"}">${guess.affiliation}</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.status === answer.status ? "#32cd32" : "#cc3300"}">${guess.status}</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.height === answer.height ? "#32cd32" : "#cc3300"}">${guess.height} cm ${lowHighHeight()}</h4></strong></div>
-            <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: ${guess.weight === answer.weight ? "#32cd32" : "#cc3300"}">${guess.weight} kg ${lowHighWeight()}</h3></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; ">${guess.name}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.race === answer.race ? "#32cd32" : "#cc3300"}">${guess.race}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.affiliation === answer.affiliation ? "#32cd32" : "#cc3300"}">${guess.affiliation}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.status === answer.status ? "#32cd32" : "#cc3300"}">${guess.status}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.height === answer.height ? "#32cd32" : "#cc3300"}">${guess.height === 0 ? "N/A" : guess.height + " cm"} ${guess.height !== 0 ? lowHighHeight() : ""}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.weight === answer.weight ? "#32cd32" : "#cc3300"}">${guess.weight === 0 ? "N/A" : guess.weight + " kg"} ${guess.weight !== 0 ? lowHighHeight() : ""}</h3></strong></div>
         </div>
         `;
         guesses.innerHTML += html;
@@ -273,12 +273,12 @@ guessFunc = async (guess) => {
                 <strong><h1 style="font-family: BleachTYBW; text-decoration: underline; color: #cc3300; margin-top: 0;">YOU MISSED</h1></strong>
                 <div class="guessBox" data-default="">
                     <div class="guessImage" style="background-image: url('${imageURL}')"></div>
-                    <div class="guessText"><h4 style="font-family: BleachTYBW; "><strong>${answer.name}</strong></h4></div>
-                    <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.race}</h4></strong></div>
-                    <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.affiliation}</h4></strong></div>
-                    <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.status}</h4></strong></div>
-                    <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.height} cm</h4></strong></div>
-                    <div class="guessText"><strong><h4 style="font-family: BleachTYBW; color: #32cd32">${answer.weight} kg</h4></strong></div>
+                    <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; ">${answer.name}</h4></strong></div>
+                    <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.race}</h4></strong></div>
+                    <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.affiliation}</h4></strong></div>
+                    <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.status}</h4></strong></div>
+                    <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.height === 0 ? "N/A" : answer.height + " cm"}</h4></strong></div>
+                    <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.weight === 0 ? "N/A" : answer.weight + " kg"}</h4></strong></div>
                 </div>
                 `;
             guesses.innerHTML += html;
