@@ -232,6 +232,9 @@ guessFunc = async (guess) => {
                 if (parseInt(guess.weight) < parseInt(answer.weight)) {
                     return "🔺";
                 }
+                else if (guess.weight === answer.weight) {
+                    return "";
+                }
                 else {
                     return "🔻";
                 }
@@ -245,6 +248,9 @@ guessFunc = async (guess) => {
                 if (guess.height < answer.height) {
                     return "🔺";
                 }
+                else if (guess.height === answer.height) {
+                    return "";
+                }
                 else {
                     return "🔻";
                 }
@@ -257,8 +263,8 @@ guessFunc = async (guess) => {
             <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.race === answer.race ? "#32cd32" : "#cc3300"}">${guess.race}</h4></strong></div>
             <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.affiliation === answer.affiliation ? "#32cd32" : "#cc3300"}">${guess.affiliation}</h4></strong></div>
             <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.status === answer.status ? "#32cd32" : "#cc3300"}">${guess.status}</h4></strong></div>
-            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.height === answer.height ? "#32cd32" : "#cc3300"}">${guess.height === 0 ? "N/A" : guess.height + " cm"} ${guess.height !== 0 ? lowHighHeight() : ""}</h4></strong></div>
-            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.weight === answer.weight ? "#32cd32" : "#cc3300"}">${guess.weight === 0 ? "N/A" : guess.weight + " kg"} ${guess.weight !== 0 ? lowHighWeight() : ""}</h3></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.height === answer.height ? "#32cd32" : "#cc3300"}">${guess.height === 0 ? (guess.height === answer.height) ? "N/A" : "N/A ❌" : guess.height + " cm"} ${guess.height !== 0 ? lowHighHeight() : ""}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.weight === answer.weight ? "#32cd32" : "#cc3300"}">${guess.weight === 0 ? (guess.weight === answer.weight) ? "N/A" : "N/A ❌" : guess.weight + " kg"} ${guess.weight !== 0 ? lowHighWeight() : ""}</h3></strong></div>
         </div>
         `;
         guesses.innerHTML += html;
