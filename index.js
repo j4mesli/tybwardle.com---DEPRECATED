@@ -177,7 +177,7 @@ guessFunc = async (guess) => {
         const html = `
         <div class="guessBox" data-default="">
             <div class="guessImage" style="background-image: url('${imageURL}')"></div>
-            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; ">${answer.name}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW;">${answer.name}</h4></strong></div>
             <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.race}</h4></strong></div>
             <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.affiliation}</h4></strong></div>
             <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.status}</h4></strong></div>
@@ -259,7 +259,7 @@ guessFunc = async (guess) => {
         const html = `
         <div class="guessBox" data-default="">
             <div class="guessImage" style="background-image: url('${imageURL}')"></div>
-            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; ">${guess.name}</h4></strong></div>
+            <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #ff4000;">${guess.name}</h4></strong></div>
             <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.race === answer.race ? "#32cd32" : "#cc3300"}">${guess.race}</h4></strong></div>
             <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.affiliation === answer.affiliation ? "#32cd32" : "#cc3300"}">${guess.affiliation}</h4></strong></div>
             <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: ${guess.status === answer.status ? "#32cd32" : "#cc3300"}">${guess.status}</h4></strong></div>
@@ -289,7 +289,7 @@ guessFunc = async (guess) => {
                 <strong><h1 style="font-family: BleachTYBW; text-decoration: underline; color: #cc3300; margin-top: 0;">YOU MISSED</h1></strong>
                 <div class="guessBox" data-default="">
                     <div class="guessImage" style="background-image: url('${imageURL}')"></div>
-                    <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; ">${answer.name}</h4></strong></div>
+                    <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW;">${answer.name}</h4></strong></div>
                     <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.race}</h4></strong></div>
                     <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.affiliation}</h4></strong></div>
                     <div class="guessText"><strong><h4 class="shrinkMobile" style="font-family: BleachTYBW; color: #32cd32">${answer.status}</h4></strong></div>
