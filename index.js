@@ -97,7 +97,7 @@ submitGuess.addEventListener("click", async () => {
     search.value = "";
     searchMatches.innerHTML = "";
     if (guess === "" || matches.length === 0) {
-        document.getElementById("error").style.display = "block";
+        document.getElementById("error").style.display = "inline-block";
     }
     else if (userGuesses.includes(matches[0].name)) {
         document.getElementById("guessAlreadyUsed").style.display = "block";
@@ -137,7 +137,7 @@ document.addEventListener("keypress", async function (e) {
         // console.log(guess);
         // console.log(matches);
         if (guess === "" || matches.length === 0) {
-            document.getElementById("error").style.display = "block";
+            document.getElementById("error").style.display = "inline-block";
         }
         else if (userGuesses.includes(matches[0].name)) {
             document.getElementById("guessAlreadyUsed").style.display = "block";
