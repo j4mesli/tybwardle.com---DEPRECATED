@@ -1,3 +1,4 @@
+header("Access-Control-Allow-Origin: *");
 const search = document.getElementById("guess");
 const searchMatches = document.getElementById("matches");
 const clearSearch = document.getElementById("clearGuess");
@@ -6,13 +7,6 @@ const guesses = document.getElementById("guesses");
 const congratulations = document.getElementById("congratulations");
 const sorry = document.getElementById("sorry");
 const incorrectanswer = document.getElementById("IncorrectAnswer");
-const getToday = async () => {
-    // parse today.json for data of the correct answer
-    const ans = await fetch("../assets/json/today.json");
-    const answer = await ans.json();
-    return answer;
-}
-const answer = getToday();
 let userGuesses = [];
 
 // hide/show about section
@@ -174,6 +168,9 @@ document.addEventListener("keypress", async function (e) {
 guessFunc = async (guess) => {
     // adds name of guess to list of already guessed names
     userGuesses.push(guess.name);
+    // parse today.json for data of the correct answer
+    const ans = await fetch("../assets/json/today.json");
+    const answer = await ans.json();
     // if guess is correct
     if (guess.name === answer.name) {
         const imageURL = "assets/images/" + answer.image + ".jpg"
