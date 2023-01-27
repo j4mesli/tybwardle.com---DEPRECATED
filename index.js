@@ -1,4 +1,3 @@
-header("Access-Control-Allow-Origin: *");
 const search = document.getElementById("guess");
 const searchMatches = document.getElementById("matches");
 const clearSearch = document.getElementById("clearGuess");
